@@ -1,0 +1,12 @@
+{
+  "name": "firda",
+  "version": "1.0.0-dev",
+  "description": "Cute discord bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "dependencies": {
+    "discord.js": "^14.17.3"
+  }
+}
