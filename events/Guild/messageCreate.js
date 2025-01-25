@@ -25,15 +25,15 @@ module.exports = async (client, message) => {
         return dmChannel.send({ content: content, components: [row] });
     }
 
+    const prefix = client.config.prefix;
     const mention = new RegExp(`^<@!?${client.user.id}>( |)$`);
 
     if (message.content.match(mention)) {
-        embed.setDescription(`Use \`/help\` command to get list of commands.`);
+        embed.setDescription(`Use \`${prefix}help\` command to get list of commands.`);
 
         message.reply({ embeds: [embed] });
     }
 
-    const prefix = client.config.prefix;
     const rawContent = message.content.toLowerCase();
     const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
     const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${client.user.username.toLowerCase()}|${escapeRegex(prefix)})\\s*`);
