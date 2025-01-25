@@ -3,7 +3,7 @@ const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, PermissionsB
 module.exports = async (client, message) => {
     if (message.author.bot || !message.guild || message.system || message.webhookId) return;
 
-    const embed = new EmbedBuilder().setColor(client.config.embedColor);
+    const embed = new EmbedBuilder().setColor(client.config.color);
     const row = new ActionRowBuilder().addComponents(
         new ButtonBuilder().setLabel("Support Server").setURL(client.config.link.discord).setStyle(ButtonStyle.Link),
     );
