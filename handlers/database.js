@@ -10,10 +10,9 @@ module.exports = async(client) => {
     
     const mySqlDriver = new MySQLDriver({
         host: process.env.MYSQL_HOST,
-        port: 18645,
         user: process.env.MYSQL_USER,
         password: process.env.MYSQL_PASSWORD,
-        database: "data"
+        database: "defaultdb"
     });
     
     await mongoDriver.connect();
