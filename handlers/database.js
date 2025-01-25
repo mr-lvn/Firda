@@ -1,7 +1,7 @@
-const { QuickDB, MongoDriver, MySQLDriver } = require("quick.db");
+const { QuickDB, MongoDriver, MySQLDriver } = require("dreamvast.quick.db");
 
 module.exports = async(client) => {
-    console.log("🔜 | Load Database")
+    console.log("🔜 | Load Database...");
     const mongoDriver = new MongoDriver(process.env.MONGO_URI);
     
     const mySqlDriver = new MySQLDriver({
@@ -11,8 +11,8 @@ module.exports = async(client) => {
         database: "data"
     });
     
-    await mongoDriver.connect().catch(console.error);
-    await mySqlDriver.connect().catch(console.error);
+    await mongoDriver.connect();
+    await mySqlDriver.connect();
     
     client.db = new QuickDB({ driver: mySqlDriver });
     client.mongo = new QuickDB({ driver: mongoDriver });
