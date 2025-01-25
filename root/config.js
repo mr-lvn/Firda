@@ -3,7 +3,8 @@ module.exports = {
     developerId: "561170896480501790",
     prefix: "ly.",
     link: {
+        invite: "https://discord.com",
         discord: "https://discord.gg",
-        website: "https://firda.web.app"
+        website: "https://firda.web.app",
     }
 }

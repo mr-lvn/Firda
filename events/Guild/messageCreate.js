@@ -7,6 +7,7 @@ module.exports = async (client, message) => {
 
     const embed = new EmbedBuilder().setColor(client.config.color);
     const row = new ActionRowBuilder().addComponents(
+        new ButtonBuilder().setLabel("Invite").setURL(client.config.link.invite).setStyle(ButtonStyle.Link),
         new ButtonBuilder().setLabel("Support Server").setURL(client.config.link.discord).setStyle(ButtonStyle.Link),
     );
 
@@ -31,7 +32,7 @@ module.exports = async (client, message) => {
     if (message.content.match(mention)) {
         embed.setDescription(`Use \`${prefix}help\` command to get list of commands.`);
 
-        message.reply({ embeds: [embed] });
+        message.reply({ embeds: [embed], components: [row] });
     }
 
     const rawContent = message.content.toLowerCase();
