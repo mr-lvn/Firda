@@ -3,10 +3,9 @@ const { CommandBuilder } = require("../../lib/");
 module.exports = new CommandBuilder({
     description: "Bot response latency",
     
-    async execute(firda) {
-        const now = await Date.now();
-        const msg = await firda.reply("*Pinging...*");
+    execute(firda) {
+        const start = Date.now();
         
-        msg.edit(`Pong! **${msg.createdTimestamp - now}**ms`);
+        firda.reply("*Pinging...*").then(msg => msg.edit(`Pong! **${Date.now() - start}**ms`));
     }
 })
