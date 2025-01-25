@@ -10,12 +10,8 @@ module.exports = async(client) => {
         database: "data"
     });
     
-    try {
-        await mongoDriver.connect();
-        await mySqlDriver.connect();
-    } catch(error) {
-        console.info(error);
-    }
+    await mongoDriver.connect();
+    await mySqlDriver.connect();
     
     client.db = new QuickDB({ driver: mySqlDriver });
     client.mongo = new QuickDB({ driver: mongoDriver });
