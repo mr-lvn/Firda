@@ -1,5 +1,5 @@
 const { QuickDB } = require("dreamvast.quick.db");
-const { MongoDriver } = require("dreamvast.quickdb/MongoDriver");
+const { MongoDriver } = require("dreamvast.quick.db/MongoDriver");
 const { MySQLDriver } = require("dreamvast.quick.db/MySQLDriver");
 
 module.exports = async(client) => {
