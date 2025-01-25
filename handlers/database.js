@@ -13,7 +13,7 @@ module.exports = async(client) => {
         port: 18645,
         user: process.env.MYSQL_USER,
         password: process.env.MYSQL_PASSWORD,
-        database: "defaultdb"
+        database: "data"
     });
     
     await mongoDriver.connect();
