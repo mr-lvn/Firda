@@ -15,11 +15,8 @@ module.exports = async(client) => {
         database: "defaultdb"
     });
     
-    await mongoDriver.connect();
-    await mySqlDriver.connect();
-    
-    client.db = new QuickDB({ driver: mySqlDriver });
-    client.mongo = new QuickDB({ driver: mongoDriver });
+    client.db = new QuickDB({ driver: mySqlDriver }).init();
+    client.mongo = new QuickDB({ driver: mongoDriver }).init();
     
     console.log(`✅ | Database connected [${Date.now() - start}ms]`);
 }
