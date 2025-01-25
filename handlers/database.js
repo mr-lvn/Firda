@@ -1,6 +1,7 @@
 const { QuickDB, MongoDriver, MySQLDriver } = require("quick.db");
 
 module.exports = async(client) => {
+    console.log("🔜 | Load Database")
     const mongoDriver = new MongoDriver(process.env.MONGO_URI);
     
     const mySqlDriver = new MySQLDriver({
