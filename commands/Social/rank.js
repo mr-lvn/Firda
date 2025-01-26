@@ -13,8 +13,8 @@ module.exports = new CommandBuilder({
         const user = await getUser(ci);
         const member = ci.guild.members.cache.get(user.id);
         
-        const currentXp = ci.db.get(member.user.id+"_Xp");
-        const currentLevel = ci.db.get(member.user.id+"_Level");
+        const currentXp = parseInt(ci.db.get(member.user.id+"_Xp"));
+        const currentLevel = parseInt(ci.db.get(member.user.id+"_Level"));
         
         const card = new RankCardBuilder()
             .setUsername(cutName(member.user.username))
