@@ -1,6 +1,6 @@
 module.exports = async (ci) => {
     const query = !ci.args.length ? ci.args.join(" ") : ci.args.join(" ").toLowerCase();
-    return ci.ctx.users.mentions.first() ?? await findUser(ci, query) ?? ci.user; 
+    return ci.ctx.mentions.users.first() ?? await findUser(ci, query) ?? ci.user; 
 }
 
 async function findUser(ci, query) {
