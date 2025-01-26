@@ -11,7 +11,7 @@ module.exports = new CommandBuilder({
         
         const code = ci.args.join(" ");
         
-        const embed = new EmbedBuilder().setColor(ci.client.config.color);
+        const embed = new EmbedBuilder().setColor(ci.config.color);
 
         try {
 

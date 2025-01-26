@@ -20,7 +20,7 @@ module.exports = new CommandBuilder({
             .setUsername(cutName(member.user.username))
             .setDisplayName(cutName(member.nickname || member.user.displayName || ""))
             .setAvatar(member.user.displayAvatarURL({ size: 1024, extension: "png" }))
-            .setBackground("https://dl.dir.freefiremobile.com/common/web_event/official2.ff.garena.all/202210/ad657d3c009adbd73302a6603e6ae6d5.jpg")
+            .setBackground(ci.config.color)
             .setCurrentXP(currentXp)
             .setRequiredXP(128*currentLevel)
             .setLevel(currentLevel)
