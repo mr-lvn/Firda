@@ -1,0 +1,10 @@
+const cron = require("node-cron");
+
+module.exports = () => {
+    cron.schedule('4 0 0 1 * * *', () => {
+        console.log('Running a job at 01:40 at Asia/Jakarta timezone');
+    }, {
+        scheduled: true,
+        timezone: "Asia/Jakarta"
+    });
+}
