@@ -18,7 +18,7 @@ module.exports = new CommandBuilder({
         
         const card = new RankCardBuilder()
             .setUsername(cutName(member.user.username))
-            .setDisplayName(cutName(member.user.displayName || member.nickname || ""))
+            .setDisplayName(cutName(member.nickname || member.user.displayName || ""))
             .setAvatar(member.user.displayAvatarURL({ size: 1024, extension: "png" }))
             .setCurrentXP(currentXp)
             .setRequiredXP(128*currentLevel*3)
