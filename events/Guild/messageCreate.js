@@ -1,9 +1,12 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 const { CommandInterface } = require("../../lib/");
+const { registerUser } = require("../../functions");
 
 module.exports = async (client, message) => {
     if (message.author.bot || !message.guild || message.system || message.webhookId) return;
+
+    registerUser(client, message.author.id);
 
     const embed = new EmbedBuilder().setColor(client.config.color);
     const row = new ActionRowBuilder().addComponents(
