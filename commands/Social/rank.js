@@ -24,8 +24,7 @@ module.exports = new CommandBuilder({
             .setRequiredXP(128*currentLevel*3)
             .setLevel(currentLevel)
             .setRank(1)
-            .setStatus("online")
-            .setFonts(font.toJSON());
+            .setStatus("online");
         
         const image = await card.build({ format: 'png' });
         
