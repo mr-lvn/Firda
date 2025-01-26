@@ -4,7 +4,7 @@ const { Font, RankCardBuilder } = require("canvacord");
 
 const { getUser } = require("../../functions/");
 
-Font.loadDefault();
+const font = Font.fromFile(process.cwd+"/root/font/GFF.ttf");
 
 module.exports = new CommandBuilder({
     description: "",
@@ -24,7 +24,8 @@ module.exports = new CommandBuilder({
             .setRequiredXP(128*currentLevel*3)
             .setLevel(currentLevel)
             .setRank(1)
-            .setStatus("online");
+            .setStatus("online")
+            .setFonts(font.toJSON());
         
         const image = await card.build({ format: 'png' });
         
