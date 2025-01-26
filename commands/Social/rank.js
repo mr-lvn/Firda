@@ -1,8 +1,10 @@
 const { CommandBuilder } = require("../../lib/");
 
-const { RankCardBuilder } = require("canvacord");
+const { Font, RankCardBuilder } = require("canvacord");
 
 const { getUser } = require("../../functions/");
+
+Font.loadDefault();
 
 module.exports = new CommandBuilder({
     description: "",
