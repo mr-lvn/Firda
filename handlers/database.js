@@ -14,7 +14,9 @@ module.exports = async(client) => {
         user: process.env.MYSQL_USER,
         password: process.env.MYSQL_PASSWORD,
         database: "defaultdb",
-        ssl: `-----BEGIN CERTIFICATE-----
+        ssl: {
+            rejectUnauthorized: true,
+            ca: `-----BEGIN CERTIFICATE-----
 MIIEQTCCAqmgAwIBAgIUV8S1EMkyFY+YhL8V7cahmscm/PUwDQYJKoZIhvcNAQEM
 BQAwOjE4MDYGA1UEAwwvMzJlYTU4MzItODhiMS00ODgxLWI1MDMtNDhkZDZhYjFh
 ZDlhIFByb2plY3QgQ0EwHhcNMjUwMTI1MTA1NDU5WhcNMzUwMTIzMTA1NDU5WjA6
@@ -39,6 +41,7 @@ wmS2qlEy6eXKQCQBB3FJWTZgZjaoL6zyNK8mTaEgs/36asSKPNSIKqJlw0JYRnMB
 RxVRhhBQlBRjsHW1PBovVXJYh+x9R1y1dVp0SxweLsCeb59ziSCnYXw1nngfQDaf
 QIcsW8gOKmo0/j5OT1mJ4bQs9km1wkFlbPVEy0lFjEbes52y2A==
 -----END CERTIFICATE-----`
+        }
     });
     
     await mongoDriver.connect();
