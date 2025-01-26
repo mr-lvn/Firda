@@ -21,7 +21,7 @@ module.exports = new CommandBuilder({
             .setDisplayName(cutName(member.user.displayName || member.nickname || ""))
             .setAvatar(member.user.displayAvatarURL({ size: 1024, extension: "png" }))
             .setCurrentXP(currentXp)
-            .setRequiredXP(currentXp*currentLevel*3)
+            .setRequiredXP(128*currentLevel*3)
             .setLevel(currentLevel)
             .setRank(1)
             .setStatus("online");
