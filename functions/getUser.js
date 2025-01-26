@@ -8,8 +8,8 @@ async function findUser(ci, query) {
     const members = ci.guild.members;
     
     if (isNaN(query)) {
-        const user = users.cache.find(u => u.username.toLowerCase() == query || u.globalName.toLowerCase() == query);
-        const member = ci.guild.members.cache.find(m => m.nickname.toLowerCase() == query);
+        const user = users.cache.find(u => u.username?.toLowerCase() == query || u.globalName?.toLowerCase() == query);
+        const member = ci.guild.members.cache.find(m => m.nickname?.toLowerCase() == query);
         if (user) return user;
         else return member ? member.user : void 0;
     }
