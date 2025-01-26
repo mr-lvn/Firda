@@ -4,8 +4,7 @@ const { Font, RankCardBuilder } = require("canvacord");
 
 const { getUser } = require("../../functions/");
 
-const { readFile } = require("node:fs");
-const font = new Font(readFile(process.cwd()+"/root/font/GFF.ttf"), "GFF");
+Font.fromFile(process.cwd()+"/root/font/GFF.ttf");
 
 module.exports = new CommandBuilder({
     description: "",
