@@ -1,5 +1,7 @@
 const { CommandBuilder } = require("../../lib/");
 
+const { RankCardBuilder } = require("canvacord");
+
 const { getUser } = require("../../functions/");
 
 module.exports = new CommandBuilder({
