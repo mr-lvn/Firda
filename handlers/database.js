@@ -11,7 +11,7 @@ module.exports = async(client) => {
     const postgresDriver = new PostgresDriver({
         host: process.env.POSTGRESQL_HOST,
         port: 18645,
-        user: "mrlvn",
+        user: process.env.POSTGRESQL_USER,
         password: process.env.POSTGRESQL_PASSWORD,
         database: "root",
         ssl: {
