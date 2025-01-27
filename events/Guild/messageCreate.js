@@ -1,7 +1,7 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 const { CommandInterface } = require("../../lib/");
-const { Guild, User } = require("../../functions/register");
+const { Guild, User } = require("../../database/register");
 
 module.exports = async (client, message) => {
     if (message.author.bot || !message.guild || message.system || message.webhookId) return;
