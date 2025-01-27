@@ -52,10 +52,10 @@ QIcsW8gOKmo0/j5OT1mJ4bQs9km1wkFlbPVEy0lFjEbes52y2A==
     
     client.db = {
         primary: db,
-        user: await db.table("User"),
-        guild: await db.table("Guild"),
-        economy: await db.table("Economy"),
-        leveling: await db.table("Leveling")
+        user: await db.table("user"),
+        guild: await db.table("guild"),
+        economy: await db.table("economy"),
+        leveling: await db.table("leveling")
     }
     client.mongo = new QuickDB({ driver: mongoDriver });
     
