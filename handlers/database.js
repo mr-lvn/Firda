@@ -47,16 +47,17 @@ QIcsW8gOKmo0/j5OT1mJ4bQs9km1wkFlbPVEy0lFjEbes52y2A==
     await mongoDriver.connect();
     await postgresDriver.connect();
     
-    const db = new QuickDB({ driver: postgresDriver });
+    const db = new QuickDB({ driver: postgresDriver, table: "root" });
     db.init();
     
     client.db = {
+        root: db,
         user: await db.table("User"),
         guild: await db.table("Guild"),
         economy: await db.table("Economy"),
         leveling: await db.table("Leveling")
     }
-    client.mongo = new QuickDB({ driver: mongoDriver });
+    client.mongo = new QuickDB({ driver: mongoDriver, table: "root" });
     
     console.log(`✅ | Database connected [${Date.now() - start}ms]`);
 }
