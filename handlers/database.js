@@ -1,6 +1,6 @@
 const { QuickDB } = require("dreamvast.quick.db");
 const { MongoDriver } = require("dreamvast.quick.db/MongoDriver");
-const { MySQLDriver } = require("dreamvast.quick.db/MySQLDriver");
+const { PostgresDriver } = require("dreamvast.quick.db/PostgresDriver");
 
 module.exports = async(client) => {
     console.log("🔜 | Load Database...");
@@ -8,7 +8,7 @@ module.exports = async(client) => {
     const start = Date.now();
     const mongoDriver = new MongoDriver(process.env.MONGO_URI);
     
-    const mySqlDriver = new MySQLDriver({
+    const mySqlDriver = new PostgresDriver({
         host: process.env.MYSQL_HOST,
         port: 18645,
         user: process.env.MYSQL_USER,

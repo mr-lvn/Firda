@@ -13,5 +13,6 @@ module.exports = {
         xp: 0,
         gold: 0,
     },
+    registered: false,
     suspended: false,
 }
