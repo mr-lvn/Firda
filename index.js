@@ -1,6 +1,6 @@
-const { Firda } = require("./lib/");
+const { Kelly } = require("./lib/");
 
-const client = new Firda();
+const client = new Kelly();
 client.setup();
 
 module.exports = client;

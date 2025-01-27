@@ -1,7 +1,7 @@
 const { CommandBuilder } = require("../../lib/");
 
 module.exports = new CommandBuilder({
-    description: "Bot response latency",
+    description: "Bot response latency.",
     
     execute(ci) {
         const start = Date.now();

@@ -1,17 +1,19 @@
 const { ActionRowBuilder, ButtonBuilder, ButtonStyle, EmbedBuilder, PermissionsBitField } = require("discord.js");
 
 const { CommandInterface } = require("../../lib/");
-const { registerUser } = require("../../functions");
+const { Guild, User } = require("../../functions");
 
 module.exports = async (client, message) => {
     if (message.author.bot || !message.guild || message.system || message.webhookId) return;
 
-    await registerUser(client, message.author.id);
+    Guild(client, message.guild.id);
+    User(client, message.author.id);
 
     const embed = new EmbedBuilder().setColor(client.config.color);
     const row = new ActionRowBuilder().addComponents(
         new ButtonBuilder().setLabel("Invite").setURL(client.config.link.invite).setStyle(ButtonStyle.Link),
         new ButtonBuilder().setLabel("Support Server").setURL(client.config.link.discord).setStyle(ButtonStyle.Link),
+        new ButtonBuilder().setLabel("Website").setURL(client.config.link.website).setStyle(ButtonStyle.Link),
     );
 
     const botPermissions = ["ViewChannel", "SendMessages", "EmbedLinks"];
@@ -54,12 +56,10 @@ module.exports = async (client, message) => {
 
     if (!command) return;
 
-    console.log(`[PREFIX] [${command.name}] | (${message.author.username})[${message.author.id}] | (${message.guild.name})[${message.guildId}]`);
-
-    const userData = await client.mongo.get(message.author.id);
+    const userData = await client.db.user.get(message.author.id);
 
     if (userData && userData?.suspended) {
-        embed.setDescription(`You have been banned from using the bot.\n\`\`\`${userData.suspended?.reason}\`\`\``);
+        embed.setDescription(`You have been banned from using the bot.\n\`\`\`${userData?.suspendReason}\`\`\``);
 
         return message.reply({ embeds: [embed] });
     }
@@ -75,4 +75,6 @@ module.exports = async (client, message) => {
     command.executeSync(
         new CommandInterface({ client, message, prefix, args })
     );
+    
+    if (message.author.id != client.config.developerId) console.log(`[PREFIX] [${command.name}] | (${message.author.username})[${message.author.id}] | (${message.guild.name})[${message.guildId}]`);
 }

@@ -5,6 +5,6 @@ module.exports = {
     link: {
         invite: "https://discord.com",
         discord: "https://discord.gg",
-        website: "https://firda.web.app",
+        website: "https://kelly.bot",
     }
 }

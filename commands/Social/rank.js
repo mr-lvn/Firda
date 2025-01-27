@@ -7,14 +7,14 @@ const { getUser } = require("../../functions/");
 Font.fromFile(process.cwd()+"/root/font/GFF.ttf");
 
 module.exports = new CommandBuilder({
-    description: "",
+    description: "Leveling rank card.",
     
     async execute(ci) {
         const user = await getUser(ci);
         const member = ci.guild.members.cache.get(user.id);
         
-        const currentXp = await ci.db.get(member.user.id+".xp");
-        const currentLevel = await ci.db.get(member.user.id+".level");
+        const currentXp = await ci.db.leveling.get(member.user.id+".xp");
+        const currentLevel = await ci.db.leveling.get(member.user.id+".level");
         
         const card = new RankCardBuilder()
             .setUsername(cutName(member.user.username))

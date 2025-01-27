@@ -8,12 +8,12 @@ module.exports = async(client) => {
     const start = Date.now();
     const mongoDriver = new MongoDriver(process.env.MONGO_URI);
     
-    const mySqlDriver = new PostgresDriver({
-        host: process.env.MYSQL_HOST,
+    const postgresDriver = new PostgresDriver({
+        host: process.env.POSTGRESQL_HOST,
         port: 18645,
-        user: process.env.MYSQL_USER,
-        password: process.env.MYSQL_PASSWORD,
-        database: "defaultdb",
+        user: "mrlvn",
+        password: process.env.POSTGRESQL_PASSWORD,
+        database: "root",
         ssl: {
             rejectUnauthorized: true,
             ca: `-----BEGIN CERTIFICATE-----
@@ -45,10 +45,17 @@ QIcsW8gOKmo0/j5OT1mJ4bQs9km1wkFlbPVEy0lFjEbes52y2A==
     });
     
     await mongoDriver.connect();
-    await mySqlDriver.connect();
+    await postgresDriver.connect();
     
-    client.db = new QuickDB({ driver: mySqlDriver });
-    client.db.init();
+    const db = new QuickDB({ driver: postgresDriver });
+    db.init();
+    
+    client.db = {
+        user: await db.table("User"),
+        guild: await db.table("Guild"),
+        economy: await db.table("Economy"),
+        leveling: await db.table("Leveling")
+    }
     client.mongo = new QuickDB({ driver: mongoDriver });
     
     console.log(`✅ | Database connected [${Date.now() - start}ms]`);

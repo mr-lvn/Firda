@@ -4,7 +4,7 @@ const { EmbedBuilder } = require("discord.js");
 const util = require("node:util");
 
 module.exports = new CommandBuilder({
-    description: "Code evaluation tool",
+    description: "Code evaluation tool.",
     
     async execute(ci) {
         if (!ci.args.length) return;
