@@ -48,10 +48,10 @@ QIcsW8gOKmo0/j5OT1mJ4bQs9km1wkFlbPVEy0lFjEbes52y2A==
     await postgresDriver.connect();
     
     const db = new QuickDB({ driver: postgresDriver });
-    db.init();
+    await db.init();
     
     client.db = {
-        root: db,
+        primary: db,
         user: await db.table("User"),
         guild: await db.table("Guild"),
         economy: await db.table("Economy"),
