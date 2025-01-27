@@ -48,7 +48,7 @@ QIcsW8gOKmo0/j5OT1mJ4bQs9km1wkFlbPVEy0lFjEbes52y2A==
     await mySqlDriver.connect();
     
     client.mongo = new QuickDB({ driver: mySqlDriver });
-    client.db.init();
+    client.mongo.init();
     client.db = new QuickDB({ driver: mongoDriver });
     
     console.log(`✅ | Database connected [${Date.now() - start}ms]`);
